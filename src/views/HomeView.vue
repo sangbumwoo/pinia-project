@@ -20,8 +20,17 @@
 
 <script setup>
 import { useCounterStore } from '@/stores/counter'
-import { useTodoStore} from '@/stores/todo'
+import { useTodoStore } from '@/stores/todo'
+import { watch } from 'vue'
 
 const counterStore = useCounterStore()
 const todoStore = useTodoStore();
+console.log(todoStore);
+console.log(todoStore.todoList);
+watch(todoStore.todoList, (data) => {
+  console.log('watch todoStore.todoList', data)
+})
+watch(todoStore, (data) => {
+  console.log('watch todoStore', data.todoList)
+})
 </script>
